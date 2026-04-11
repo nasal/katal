@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katal - Ekstra deviško oljčno olje iz Slovenske Istre</title>
+  <meta name="description" content="Katal - ekološko ekstra deviško oljčno olje z več kot 50-letno tradicijo. Družina Katonar, Izola, Slovenija.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --olive: #6b7c3e;
+      --olive-dark: #4a5a28;
+      --gold: #c9a84c;
+      --cream: #faf8f2;
+      --stone: #3d3529;
+      --text: #2c2418;
+      --text-light: #6b6052;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(250, 248, 242, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 10px rgba(0,0,0,0.06);
+    }
+
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--olive-dark);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--stone);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--olive); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(
+        170deg,
+        #e8e4d4 0%,
+        #d4cfb8 30%,
+        #c5c0a0 60%,
+        var(--cream) 100%
+      );
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236b7c3e' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+    .hero-olive {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      color: var(--olive-dark);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero .tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      background: var(--olive);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--olive-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--olive-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--gold);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-divider {
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.5rem 0 2rem;
+    }
+
+    section p {
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── About ── */
+    #o-nas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      background: linear-gradient(135deg, #bcc49e, #8a9462);
+      border-radius: 4px;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+    }
+
+    /* ── Benefits ── */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .benefit-card {
+      padding: 2rem 1.5rem;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .benefit-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--olive-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .benefit-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    /* ── History ── */
+    .history-section {
+      background: var(--stone);
+      padding: 5rem 2rem;
+      max-width: none;
+      margin: 0;
+    }
+
+    .history-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .history-section .section-subtitle,
+    .history-section .section-title {
+      color: var(--cream);
+    }
+
+    .history-section .section-divider {
+      background: var(--gold);
+    }
+
+    .history-section p {
+      color: #b8b0a4;
+      font-size: 1rem;
+    }
+
+    .timeline {
+      margin-top: 2.5rem;
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid var(--gold);
+    }
+
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.35rem;
+      top: 0.4rem;
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .timeline-year {
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    .timeline-item p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ── Oil ── */
+    .oil-section {
+      text-align: center;
+    }
+
+    .oil-section .section-divider {
+      margin: 1.5rem auto 2rem;
+    }
+
+    .oil-qualities {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+      text-align: left;
+    }
+
+    .oil-quality {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .oil-quality-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    .oil-quality h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--olive-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .oil-quality p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    /* ── Contact ── */
+    .contact-section {
+      text-align: center;
+      background: linear-gradient(180deg, var(--cream), #ece8dc);
+      max-width: none;
+      padding: 5rem 2rem;
+    }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-section .section-divider {
+      margin: 1.5rem auto 2rem;
+    }
+
+    .contact-details {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .contact-item {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .contact-item strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--stone);
+      color: #8a8078;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+    }
+
+    footer .logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+
+      #o-nas {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-image { max-height: 300px; }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .oil-qualities {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#" class="logo">KATAL</a>
+    <ul>
+      <li><a href="#o-nas">O nas</a></li>
+      <li><a href="#olje">Olje</a></li>
+      <li><a href="#zgodovina">Zgodovina</a></li>
+      <li><a href="#prednosti">Zakaj oljčno olje</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <span class="hero-olive" aria-hidden="true">&#127811;</span>
+      <h1>KATAL</h1>
+      <p class="tagline">Ekstra deviško oljčno olje iz Slovenske Istre</p>
+      <p>Že več kot 50 let družina Katonar z ljubeznijo in spoštovanjem do narave goji oljke na sončnih pobočjih Izole. Naše ekološko olje je zgodba tradicije, ki živi naprej.</p>
+      <a href="#o-nas" class="btn">Spoznajte nas</a>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="o-nas">
+    <div class="about-image" aria-label="Oljčni nasad">&#127807;</div>
+    <div>
+      <p class="section-subtitle">Naša zgodba</p>
+      <h2 class="section-title">Družina Katonar</h2>
+      <div class="section-divider"></div>
+      <p>Alen Katonar nadaljuje družinsko tradicijo oljkarstva, ki se prenaša iz roda v rod že več kot pol stoletja. Na sončnih terasah Izole, kjer sredozemsko podnebje in blag veter z morja ustvarjata idealne pogoje, rastejo naše oljke.</p>
+      <p>Vsaka kaplja našega olja je rezultat skrbnega ročnega obiranja, hitrega stiskanja in globokega spoštovanja do naravnih procesov. Naši oljčni nasadi so ekološko certificirani &mdash; brez pesticidov, brez kemičnih dodatkov, le čista narava.</p>
+      <p>Verjamemo, da najboljše olje nastane tam, kjer se tradicija sreča z naravo. Naše olje ni le prehrambeni izdelek &mdash; je del istrske kulturne dediščine.</p>
+    </div>
+  </section>
+
+  <!-- Oil Product -->
+  <section id="olje" class="oil-section">
+    <p class="section-subtitle">Naš izdelek</p>
+    <h2 class="section-title">Ekstra deviško oljčno olje</h2>
+    <div class="section-divider"></div>
+    <p>Naše ekstra deviško oljčno olje je pridelano iz avtohtonih sort istrske Belice in Leccina, ki uspevata v mikroklimi Slovenske Istre. Olje odlikuje harmoničen okus z nežno grenkobno in pikantnostjo ter svež sadežni vonj, ki pričara o skrbnem obiranju in predelavi.</p>
+    <p>Certificirano kot ekološki (BIO) proizvod, naše olje ohranja vse naravne polifenole, vitamine in antioksidante, ki jih nudi sveže stisnjena oljka.</p>
+
+    <div class="oil-qualities">
+      <div class="oil-quality">
+        <span class="oil-quality-icon">&#127807;</span>
+        <div>
+          <h4>Ekološka pridelava</h4>
+          <p>Brez pesticidov in kemičnih sredstev. Naši nasadi so certificirani po evropskih ekoloških standardih.</p>
+        </div>
+      </div>
+      <div class="oil-quality">
+        <span class="oil-quality-icon">&#9201;</span>
+        <div>
+          <h4>Hladno stiskano</h4>
+          <p>Stiskano v 24 urah po obiranju pri temperaturi pod 27 &deg;C za ohranjanje vseh hranilnih snovi.</p>
+        </div>
+      </div>
+      <div class="oil-quality">
+        <span class="oil-quality-icon">&#127942;</span>
+        <div>
+          <h4>Avtohtone sorte</h4>
+          <p>Istrska Belica in Leccino &mdash; sorte, ki v našem podnebju dosežejo izjemno aromo in okus.</p>
+        </div>
+      </div>
+      <div class="oil-quality">
+        <span class="oil-quality-icon">&#128588;</span>
+        <div>
+          <h4>Ročno obiranje</h4>
+          <p>Vsaka oljka je obrana ročno, kar zagotavlja nepoškodovane plodove in olje vrhunske kakovosti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- History -->
+  <section class="history-section" id="zgodovina">
+    <div class="history-inner">
+      <p class="section-subtitle">Dediščina</p>
+      <h2 class="section-title">Oljkarstvo v Slovenski Istri</h2>
+      <div class="section-divider"></div>
+      <p>Slovenska Istra ima bogato oljkarsko tradicijo, ki sega vse do antičnih časov. Že Rimljani so na tem območju sadili oljke in cenili olje iz istrskega polotoka. Skozi stoletja so oljčni nasadi oblikovali krajino od Kopra do Pirana in od Izole do zalednih vasi.</p>
+      <p>V času Beneške republike je bilo istrsko oljčno olje med najbolj iskanimi na trgih severne Italije. Tradicija se je ohranila skozi generacije kmetov, ki so kljub vojnam in političnim spremembam vztrajno skrbeli za svoje oljke.</p>
+      <p>Danes Slovenska Istra doživlja pravi preporod oljkarstva. Na približno 2.400 hektarjih uspeva okoli 300.000 oljk, ki rodijo olje izjemne kakovosti. Istrska oljčna olja redno prejemajo najvišja priznanja na mednarodnih ocenjevanjih, kar potrjuje, da podnebje, zemlja in znanje istrskih oljkarjev ustvarjajo resnično izjemen proizvod.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">Antika</span>
+          <p>Rimljani širijo oljkarstvo po celotnem istrskem polotoku. Istrsko olje postane cenjena dobrina na rimskih trgih.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Srednji vek</span>
+          <p>Benediktinski menihi ohranjajo znanje o gojenju oljk in predelavi olja skozi burna stoletja.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Beneška republika</span>
+          <p>Istrsko olje doseže sloves v Benetkah in po severni Italiji. Oljčni nasadi se širijo po celotnem obalnem pasu.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">20. stoletje</span>
+          <p>Kljub vojnam in političnim spremembam istrski kmetje ohranjajo oljkarsko tradicijo. Družina Katonar začne svojo pot.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Danes</span>
+          <p>Slovenska Istra je priznana kot ena najboljših oljkarskih regij v Sredozemlju. Katal nadaljuje 50-letno družinsko tradicijo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="prednosti">
+    <p class="section-subtitle">Zdravje in okus</p>
+    <h2 class="section-title">Zakaj ekstra deviško oljčno olje?</h2>
+    <div class="section-divider"></div>
+    <p>Ekstra deviško oljčno olje je temelj sredozemske prehrane, ki velja za eno najzdravejših na svetu. Znanstvene raziskave potrjujejo številne blagodejne učinke redne uporabe kakovostnega oljčnega olja.</p>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <span class="benefit-icon">&#10084;&#65039;</span>
+        <h3>Zdravje srca</h3>
+        <p>Enkrat nenasičene maščobne kisline, zlasti oleinska kislina, znižujejo slabi holesterol (LDL) in ščitijo srčno-žilni sistem.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">&#129516;</span>
+        <h3>Bogato z antioksidanti</h3>
+        <p>Polifenoli in vitamin E v oljčnem olju ščitijo celice pred oksidativnim stresom in prezgodnjim staranjem.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">&#129516;</span>
+        <h3>Protivnetno delovanje</h3>
+        <p>Oleokantal, naravna spojina v oljčnem olju, ima podobne protivnetne učinke kot ibuprofen.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">&#129382;</span>
+        <h3>Zdravje možganov</h3>
+        <p>Redna uporaba oljčnega olja je povezana z boljšim kognitivnim delovanjem in manjšim tveganjem za nevrodegenerativne bolezni.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">&#127860;</span>
+        <h3>Prebavni sistem</h3>
+        <p>Oljčno olje spodbuja zdravo prebavo, ščiti želodčno sluznico in pomaga pri absorpciji vitaminov, topnih v maščobah.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">&#128171;</span>
+        <h3>Zdrava koža</h3>
+        <p>Vitamine E in K ter zdrave maščobe hranijo kožo od znotraj in prispevajo k njenemu mladostnemu videzu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="kontakt">
+    <div class="contact-inner">
+      <p class="section-subtitle">Stopite v stik</p>
+      <h2 class="section-title">Kontakt</h2>
+      <div class="section-divider"></div>
+      <p>Naše olje je na voljo za neposreden nakup. Obiščite nas v Izoli ali nas kontaktirajte za naročilo.</p>
+
+      <div class="contact-details">
+        <div class="contact-item"><strong>Kmetija:</strong> Alen Katonar &mdash; KATAL</div>
+        <div class="contact-item"><strong>Lokacija:</strong> Izola, Slovenija</div>
+        <div class="contact-item"><strong>E-pošta:</strong> info@katal.si</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="logo">KATAL</div>
+    <p>&copy; 2026 Katal &mdash; Družina Katonar, Izola. Vse pravice pridržane.</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>
