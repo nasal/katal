@@ -129,7 +129,7 @@
     .section-heading p:last-child { margin-bottom: 0; color: var(--ink-soft); }
 
     .product {
-      background: #fffdf8;
+      background: transparent;
     }
     .product-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(2rem, 7vw, 6rem); align-items: center; }
     .product-art {
@@ -165,12 +165,11 @@
     }
     .product-copy h2 { margin-bottom: .9rem; font-size: clamp(2.2rem, 4vw, 3.5rem); }
     .product-copy > p:not(.eyebrow) { color: var(--ink-soft); font-size: 1.05rem; }
-    .details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 1.8rem 0 2rem; border-top: 1px solid var(--line); }
-    .detail { min-height: 5.3rem; padding: 1rem 1rem 1rem 0; border-bottom: 1px solid var(--line); }
-    .detail:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--line); }
-    .detail span { display: block; color: var(--olive-dark); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .detail strong { display: block; margin-top: .15rem; font-family: "Playfair Display", Georgia, serif; font-size: 1.02rem; font-weight: 600; }
-    .muted { color: var(--ink-soft); font-size: .86rem; }
+    .product-meta { margin: 1.7rem 0 2rem; padding: 1.1rem 0; border-block: 1px solid var(--line); }
+    .product-meta p { margin: 0; }
+    .product-meta p + p { margin-top: .35rem; }
+    .product-meta strong { color: var(--olive-dark); font-family: "Playfair Display", Georgia, serif; font-size: 1.08rem; }
+    .product-meta span { color: var(--ink-soft); font-size: .88rem; }
 
     .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 8vw, 7rem); align-items: center; }
     .photo-placeholder {
@@ -187,7 +186,14 @@
     .photo-placeholder p { margin: 0; color: var(--ink-soft); }
     .story-copy h2 { margin-bottom: 1rem; font-size: clamp(2.1rem, 4vw, 3.45rem); }
     .story-copy p { color: var(--ink-soft); }
-    .history-note { margin-top: 1.5rem; padding: 1.1rem 1.25rem; border-left: 3px solid var(--rose); background: #fffdf8; color: var(--ink-soft); }
+    .history-note { margin-top: 1.5rem; padding: 1.1rem 1.25rem; border-left: 3px solid var(--rose); background: rgba(232, 232, 217, .58); color: var(--ink-soft); }
+
+    .brand-strip { border-block: 1px solid var(--line); background: rgba(232, 232, 217, .52); }
+    .brand-strip-inner { display: grid; grid-template-columns: repeat(3, 1fr); width: min(calc(100% - 2.5rem), var(--max)); margin: 0 auto; }
+    .brand-strip-item { padding: 1.15rem 1rem; text-align: center; }
+    .brand-strip-item + .brand-strip-item { border-left: 1px solid var(--line); }
+    .brand-strip-item strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.05rem; }
+    .brand-strip-item span { display: block; margin-top: .08rem; color: var(--ink-soft); font-size: .73rem; letter-spacing: .08em; text-transform: uppercase; }
 
     .use-section { background: var(--ink); color: var(--cream); }
     .use-section .eyebrow { color: #f2c9c9; }
@@ -217,8 +223,12 @@
       .hero { min-height: 680px; padding: 7.8rem 1.25rem 3.5rem; }
       .hero::after { background: rgba(247,243,232,.79); }
       .product-grid, .story-grid { grid-template-columns: 1fr; }
-      .product-art { min-height: 23rem; }
+      .product-art { min-height: 18.5rem; }
       .photo-placeholder { min-height: 23rem; }
+      .brand-strip-inner { width: 100%; }
+      .brand-strip-item { padding: 1rem .45rem; }
+      .brand-strip-item strong { font-size: .93rem; }
+      .brand-strip-item span { font-size: .62rem; }
       .use-grid { grid-template-columns: 1fr; }
       .use-card { min-height: auto; }
       .use-card .number { margin-bottom: 1.3rem; }
@@ -250,6 +260,14 @@
     </div>
   </header>
 
+  <aside class="brand-strip" aria-label="Katal na kratko">
+    <div class="brand-strip-inner">
+      <div class="brand-strip-item"><strong>Izola</strong><span>Slovenska Istra</span></div>
+      <div class="brand-strip-item"><strong>50+ let</strong><span>Družinska zgodba</span></div>
+      <div class="brand-strip-item"><strong>Katonarjevi</strong><span>Oljke in olje</span></div>
+    </div>
+  </aside>
+
   <main id="vsebina">
     <section class="section product" id="olje">
       <div class="product-grid">
@@ -261,13 +279,10 @@
           <p class="eyebrow">Letošnje olje</p>
           <h2>Olje, ki ga najprej probaš na kruhu.</h2>
           <p>Najlepše ga je okusit čisto enostavno: kos dobrega kruha, malo soli in par kapelj olja. Potem pove vse samo.</p>
-          <div class="details" aria-label="Podatki o izdelku">
-            <div class="detail"><span>Izvor</span><strong>Izola, Slovenija</strong></div>
-            <div class="detail"><span>Pridelovalec</span><strong>Družina Katonar</strong></div>
-            <div class="detail"><span>Trgatev</span><strong>Podatek dodamo</strong></div>
-            <div class="detail"><span>Pakiranja in cena</span><strong>Podatek dodamo</strong></div>
+          <div class="product-meta" aria-label="Podatki o izdelku">
+            <p><strong>Izola · družina Katonar</strong></p>
+            <p><span>Letnik, sorte, pakiranja in ceno dodamo, ko dobimo letošnje podatke od Alena.</span></p>
           </div>
-          <p class="muted">Ko nam Alen pošlje podrobnosti, dodamo sorte, letnik, opis okusa, pakiranja, ceno in podatek o razpoložljivosti.</p>
           <div class="actions"><a class="button" href="mailto:info@katal.si?subject=Povpra%C5%A1evanje%20za%20Katal%20olj%C4%8Dno%20olje">Vprašaj za olje</a></div>
         </div>
       </div>
