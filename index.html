@@ -3,641 +3,328 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Katal - Ekstra deviško oljčno olje iz Slovenske Istre</title>
-  <meta name="description" content="Katal - ekološko ekstra deviško oljčno olje z več kot 50-letno tradicijo. Družina Katonar, Izola, Slovenija.">
+  <title>Katal | Ekstra deviško oljčno olje iz Izole</title>
+  <meta name="description" content="Katal je oljčno olje družine Katonar iz Izole. Zgodba oljk, domače zemlje in istrskega okusa.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      --olive: #6b7c3e;
-      --olive-dark: #4a5a28;
-      --gold: #c9a84c;
-      --cream: #faf8f2;
-      --stone: #3d3529;
-      --text: #2c2418;
-      --text-light: #6b6052;
+      --ink: #3d1f1f;
+      --ink-soft: #5e4240;
+      --olive: #69734b;
+      --olive-dark: #47512f;
+      --cream: #f7f3e8;
+      --paper: #e8e8d9;
+      --rose: #e8abab;
+      --line: rgba(61, 31, 31, 0.17);
+      --max: 1120px;
     }
 
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
+      margin: 0;
+      color: var(--ink);
       background: var(--cream);
-      line-height: 1.7;
-      font-weight: 300;
+      font-family: "DM Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
     }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
 
-    /* ── Navigation ── */
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: -5rem;
+      z-index: 999;
+      padding: .7rem 1rem;
+      background: var(--ink);
+      color: white;
+    }
+    .skip-link:focus { top: 1rem; }
+
     nav {
       position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 1rem 2rem;
+      inset: 0 0 auto;
+      z-index: 20;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      transition: background 0.3s;
+      gap: 2rem;
+      padding: 1rem clamp(1.25rem, 4vw, 4rem);
+      transition: background .25s, box-shadow .25s;
     }
-
     nav.scrolled {
-      background: rgba(250, 248, 242, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 1px 10px rgba(0,0,0,0.06);
+      background: rgba(247, 243, 232, .95);
+      box-shadow: 0 1px 0 rgba(61, 31, 31, .1);
+      backdrop-filter: blur(12px);
     }
+    .nav-logo { width: 8.4rem; line-height: 0; }
+    .nav-logo img { width: 100%; }
+    nav ul { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2.4rem); list-style: none; margin: 0; padding: 0; }
+    nav li a { color: var(--ink); text-decoration: none; font-size: .79rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    nav li a:hover, nav li a:focus-visible { color: var(--olive-dark); }
 
-    nav .logo {
-      display: block;
-      width: 8.75rem;
-      line-height: 0;
-    }
-
-    nav .logo img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--stone);
-      font-size: 0.9rem;
-      font-weight: 400;
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
-    }
-
-    nav a:hover { color: var(--olive); }
-
-    /* ── Hero ── */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      background: linear-gradient(
-        170deg,
-        #e8e4d4 0%,
-        #d4cfb8 30%,
-        #c5c0a0 60%,
-        var(--cream) 100%
-      );
       position: relative;
+      isolation: isolate;
+      min-height: min(770px, 100vh);
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      padding: 8rem clamp(1.25rem, 8vw, 9rem) 4.5rem;
+      background: var(--paper);
     }
-
     .hero::before {
-      content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('assets/istria-illustration.svg') center / cover no-repeat;
-      opacity: 0.34;
+      z-index: -2;
+      inset: 0;
+      content: "";
+      background: url("assets/istria-illustration.svg") center / cover no-repeat;
+      opacity: .48;
     }
-
-    .hero-content { position: relative; z-index: 1; max-width: 700px; }
-
-    .hero-logo {
-      display: block;
-      width: min(25rem, 82vw);
-      height: auto;
-      margin: 0 auto 1.25rem;
-    }
-
-    .sr-only {
+    .hero::after {
       position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      background: linear-gradient(90deg, rgba(247,243,232,.95) 0%, rgba(247,243,232,.78) 47%, rgba(247,243,232,.22) 100%);
     }
-
-    .hero p {
-      font-size: 1.05rem;
-      color: var(--text-light);
-      max-width: 520px;
-      margin: 0 auto 2.5rem;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.85rem 2.5rem;
-      background: var(--olive);
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .btn:hover {
-      background: var(--olive-dark);
-      transform: translateY(-1px);
-    }
-
-    /* ── Sections ── */
-    section {
-      padding: 5rem 2rem;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--olive-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-subtitle {
-      color: var(--gold);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-divider {
-      width: 50px;
-      height: 2px;
-      background: var(--gold);
-      margin: 1.5rem 0 2rem;
-    }
-
-    section p {
-      color: var(--text-light);
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-    }
-
-    /* ── About ── */
-    #o-nas {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-image {
-      background: #e8e8d9;
-      border-radius: 4px;
-      aspect-ratio: 4/5;
-      display: flex;
+    .hero-inner { width: min(100%, 610px); }
+    .hero-logo { width: min(24rem, 84vw); margin-bottom: 1.45rem; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; line-height: 1.12; }
+    .hero h1 { max-width: 11ch; margin-bottom: 1.2rem; font-size: clamp(2.45rem, 5.2vw, 4.6rem); }
+    .hero-copy { max-width: 49ch; color: var(--ink-soft); font-size: clamp(1.03rem, 1.35vw, 1.17rem); }
+    .eyebrow { margin-bottom: .7rem; color: var(--olive-dark); font-size: .76rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+    .button {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 2.75rem;
-      overflow: hidden;
-    }
-
-    .about-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .oil-section {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .oil-section::after {
-      content: '';
-      position: absolute;
-      width: 17rem;
-      height: 17rem;
-      right: -6rem;
-      bottom: -5rem;
-      background: url('assets/mark.svg') center / contain no-repeat;
-      opacity: 0.14;
-      pointer-events: none;
-    }
-
-    .oil-section > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── Benefits ── */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 2.5rem;
-    }
-
-    .benefit-card {
-      padding: 2rem 1.5rem;
-      background: #fff;
-      border-radius: 4px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+      min-height: 3.1rem;
+      padding: .8rem 1.3rem;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      font-size: .79rem;
+      font-weight: 700;
+      letter-spacing: .08em;
       text-align: center;
-    }
-
-    .benefit-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .benefit-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--olive-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .benefit-card p {
-      font-size: 0.9rem;
-      margin-bottom: 0;
-    }
-
-    /* ── History ── */
-    .history-section {
-      background: var(--stone);
-      padding: 5rem 2rem;
-      max-width: none;
-      margin: 0;
-    }
-
-    .history-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .history-section .section-subtitle,
-    .history-section .section-title {
-      color: var(--cream);
-    }
-
-    .history-section .section-divider {
-      background: var(--gold);
-    }
-
-    .history-section p {
-      color: #b8b0a4;
-      font-size: 1rem;
-    }
-
-    .timeline {
-      margin-top: 2.5rem;
-      position: relative;
-      padding-left: 2rem;
-      border-left: 2px solid var(--gold);
-    }
-
-    .timeline-item {
-      margin-bottom: 2rem;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2.35rem;
-      top: 0.4rem;
-      width: 10px;
-      height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-    }
-
-    .timeline-year {
-      font-size: 0.8rem;
-      color: var(--gold);
+      text-decoration: none;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 500;
+      transition: transform .18s, background .18s;
     }
+    .button:hover, .button:focus-visible { background: var(--olive-dark); transform: translateY(-2px); }
+    .button.secondary { background: transparent; color: var(--ink); }
+    .button.secondary:hover, .button.secondary:focus-visible { background: rgba(255,255,255,.52); }
 
-    .timeline-item p {
-      margin-bottom: 0;
-      font-size: 0.95rem;
+    main > section, .section-inner { width: min(calc(100% - 2.5rem), var(--max)); margin-inline: auto; }
+    .section { padding-block: clamp(4.5rem, 9vw, 7.5rem); }
+    .section-heading { max-width: 41rem; margin-bottom: 2.6rem; }
+    .section-heading h2 { margin-bottom: .7rem; font-size: clamp(2.05rem, 3.7vw, 3.3rem); }
+    .section-heading p:last-child { margin-bottom: 0; color: var(--ink-soft); }
+
+    .product {
+      background: #fffdf8;
     }
-
-    /* ── Oil ── */
-    .oil-section {
-      text-align: center;
-    }
-
-    .oil-section .section-divider {
-      margin: 1.5rem auto 2rem;
-    }
-
-    .oil-qualities {
+    .product-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(2rem, 7vw, 6rem); align-items: center; }
+    .product-art {
+      position: relative;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 2.5rem;
-      text-align: left;
+      place-items: center;
+      min-height: 29rem;
+      overflow: hidden;
+      background: var(--rose);
     }
-
-    .oil-quality {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
+    .product-art::before {
+      position: absolute;
+      width: 19rem;
+      height: 19rem;
+      content: "";
+      background: url("assets/mark.svg") center / contain no-repeat;
+      opacity: .47;
+      transform: rotate(-9deg);
     }
-
-    .oil-quality-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-      margin-top: 0.2rem;
+    .product-art img { position: relative; width: min(18rem, 60%); }
+    .placeholder-note {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      left: 1rem;
+      margin: 0;
+      padding: .65rem .8rem;
+      border: 1px solid rgba(61,31,31,.26);
+      background: rgba(247,243,232,.86);
+      color: var(--ink-soft);
+      font-size: .75rem;
+      line-height: 1.35;
     }
+    .product-copy h2 { margin-bottom: .9rem; font-size: clamp(2.2rem, 4vw, 3.5rem); }
+    .product-copy > p:not(.eyebrow) { color: var(--ink-soft); font-size: 1.05rem; }
+    .details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 1.8rem 0 2rem; border-top: 1px solid var(--line); }
+    .detail { min-height: 5.3rem; padding: 1rem 1rem 1rem 0; border-bottom: 1px solid var(--line); }
+    .detail:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--line); }
+    .detail span { display: block; color: var(--olive-dark); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .detail strong { display: block; margin-top: .15rem; font-family: "Playfair Display", Georgia, serif; font-size: 1.02rem; font-weight: 600; }
+    .muted { color: var(--ink-soft); font-size: .86rem; }
 
-    .oil-quality h4 {
-      font-family: 'Playfair Display', serif;
-      color: var(--olive-dark);
-      margin-bottom: 0.3rem;
-    }
-
-    .oil-quality p {
-      font-size: 0.9rem;
-      margin-bottom: 0;
-    }
-
-    /* ── Contact ── */
-    .contact-section {
-      text-align: center;
-      background: linear-gradient(180deg, var(--cream), #ece8dc);
-      max-width: none;
-      padding: 5rem 2rem;
-    }
-
-    .contact-inner {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .contact-section .section-divider {
-      margin: 1.5rem auto 2rem;
-    }
-
-    .contact-details {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      align-items: center;
-    }
-
-    .contact-item {
-      font-size: 1rem;
-      color: var(--text-light);
-    }
-
-    .contact-item strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* ── Footer ── */
-    footer {
-      background: var(--stone);
-      color: #8a8078;
-      text-align: center;
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 8vw, 7rem); align-items: center; }
+    .photo-placeholder {
+      display: grid;
+      min-height: 30rem;
+      place-items: center;
       padding: 2rem;
-      font-size: 0.85rem;
+      border: 1px dashed rgba(61,31,31,.42);
+      background: linear-gradient(135deg, #dfe0ce, var(--paper));
+      text-align: center;
     }
+    .photo-placeholder-inner { max-width: 18rem; }
+    .photo-placeholder img { width: 7rem; margin: 0 auto 1.2rem; }
+    .photo-placeholder p { margin: 0; color: var(--ink-soft); }
+    .story-copy h2 { margin-bottom: 1rem; font-size: clamp(2.1rem, 4vw, 3.45rem); }
+    .story-copy p { color: var(--ink-soft); }
+    .history-note { margin-top: 1.5rem; padding: 1.1rem 1.25rem; border-left: 3px solid var(--rose); background: #fffdf8; color: var(--ink-soft); }
 
-    footer .logo {
-      display: block;
-      width: 7.5rem;
-      margin-bottom: 0.5rem;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 0;
-    }
+    .use-section { background: var(--ink); color: var(--cream); }
+    .use-section .eyebrow { color: #f2c9c9; }
+    .use-section .section-heading p { color: #dfd3c7; }
+    .use-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .use-card { min-height: 15.5rem; padding: 1.8rem; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.17); }
+    .use-card .number { display: block; margin-bottom: 2.3rem; color: #f2c9c9; font-size: .73rem; font-weight: 700; letter-spacing: .1em; }
+    .use-card h3 { margin-bottom: .6rem; font-size: 1.55rem; }
+    .use-card p { margin-bottom: 0; color: #dfd3c7; }
 
-    footer .logo img {
-      display: block;
-      width: 100%;
-      height: auto;
-      filter: brightness(0) invert(1);
-      opacity: 0.82;
-    }
+    .contact { background: var(--paper); text-align: center; }
+    .contact-inner { width: min(calc(100% - 2.5rem), 670px); margin: 0 auto; }
+    .contact h2 { margin-bottom: 1rem; font-size: clamp(2.4rem, 5vw, 4rem); }
+    .contact p { color: var(--ink-soft); font-size: 1.06rem; }
+    .contact .actions { justify-content: center; }
+    .contact-line { margin-top: 2.3rem; font-size: .9rem !important; }
+    .contact-line a { color: var(--ink); font-weight: 700; text-underline-offset: .23em; }
 
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
+    footer { padding: 2.5rem 1.25rem; background: var(--ink); color: #d7c9be; text-align: center; }
+    .footer-logo { width: 7.3rem; margin: 0 auto .7rem; filter: brightness(0) invert(1); opacity: .84; }
+    footer p { margin: 0; font-size: .8rem; }
+
+    @media (max-width: 760px) {
+      nav { padding: .8rem 1.1rem; }
+      .nav-logo { width: 7.2rem; }
       nav ul { display: none; }
-
-      #o-nas {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .about-image { max-height: 300px; }
-
-      nav .logo { width: 7.25rem; }
-
-      .benefits-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .oil-qualities {
-        grid-template-columns: 1fr;
-      }
+      .hero { min-height: 680px; padding: 7.8rem 1.25rem 3.5rem; }
+      .hero::after { background: rgba(247,243,232,.79); }
+      .product-grid, .story-grid { grid-template-columns: 1fr; }
+      .product-art { min-height: 23rem; }
+      .photo-placeholder { min-height: 23rem; }
+      .use-grid { grid-template-columns: 1fr; }
+      .use-card { min-height: auto; }
+      .use-card .number { margin-bottom: 1.3rem; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
+  <a class="skip-link" href="#vsebina">Na vsebino</a>
   <nav id="navbar">
-    <a href="#" class="logo" aria-label="Katal, domača stran"><img src="assets/logo-secondary.svg" alt="Katal"></a>
+    <a class="nav-logo" href="#top" aria-label="Katal, domača stran"><img src="assets/logo-secondary.svg" alt="Katal"></a>
     <ul>
-      <li><a href="#o-nas">O nas</a></li>
       <li><a href="#olje">Olje</a></li>
-      <li><a href="#zgodovina">Zgodovina</a></li>
-      <li><a href="#prednosti">Zakaj oljčno olje</a></li>
+      <li><a href="#zgodba">Zgodba</a></li>
+      <li><a href="#okus">Kako ga imamo radi</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="hero-content">
+  <header class="hero" id="top">
+    <div class="hero-inner">
       <img class="hero-logo" src="assets/logo-primary.svg" alt="Katal – Dediščina okusa.">
-      <h1 class="sr-only">Katal – Ekstra deviško oljčno olje iz Slovenske Istre</h1>
-      <p>Že več kot 50 let družina Katonar z ljubeznijo in spoštovanjem do narave goji oljke na sončnih pobočjih Izole. Naše ekološko olje je zgodba tradicije, ki živi naprej.</p>
-      <a href="#o-nas" class="btn">Spoznajte nas</a>
+      <p class="eyebrow">Družina Katonar · Izola</p>
+      <h1>Oljčno olje iz naših oljk.</h1>
+      <p class="hero-copy">Pri Katonarjevih za oljke skrbimo že več kot 50 let. Iz sončnih istrskih teras nastane olje s čistim, domačim in malo pikantnim značajem.</p>
+      <div class="actions">
+        <a class="button" href="#olje">Poglej letošnje olje</a>
+        <a class="button secondary" href="#zgodba">Naša zgodba</a>
+      </div>
     </div>
   </header>
 
-  <!-- About -->
-  <section id="o-nas">
-    <div class="about-image"><img src="assets/podznak.svg" alt="Katal oljčno olje – Dediščina okusa"></div>
-    <div>
-      <p class="section-subtitle">Naša zgodba</p>
-      <h2 class="section-title">Družina Katonar</h2>
-      <div class="section-divider"></div>
-      <p>Alen Katonar nadaljuje družinsko tradicijo oljkarstva, ki se prenaša iz roda v rod že več kot pol stoletja. Na sončnih terasah Izole, kjer sredozemsko podnebje in blag veter z morja ustvarjata idealne pogoje, rastejo naše oljke.</p>
-      <p>Vsaka kaplja našega olja je rezultat skrbnega ročnega obiranja, hitrega stiskanja in globokega spoštovanja do naravnih procesov. Naši oljčni nasadi so ekološko certificirani &mdash; brez pesticidov, brez kemičnih dodatkov, le čista narava.</p>
-      <p>Verjamemo, da najboljše olje nastane tam, kjer se tradicija sreča z naravo. Naše olje ni le prehrambeni izdelek &mdash; je del istrske kulturne dediščine.</p>
-    </div>
-  </section>
-
-  <!-- Oil Product -->
-  <section id="olje" class="oil-section">
-    <p class="section-subtitle">Naš izdelek</p>
-    <h2 class="section-title">Ekstra deviško oljčno olje</h2>
-    <div class="section-divider"></div>
-    <p>Naše ekstra deviško oljčno olje je pridelano iz avtohtonih sort istrske Belice in Leccina, ki uspevata v mikroklimi Slovenske Istre. Olje odlikuje harmoničen okus z nežno grenkobno in pikantnostjo ter svež sadežni vonj, ki pričara o skrbnem obiranju in predelavi.</p>
-    <p>Certificirano kot ekološki (BIO) proizvod, naše olje ohranja vse naravne polifenole, vitamine in antioksidante, ki jih nudi sveže stisnjena oljka.</p>
-
-    <div class="oil-qualities">
-      <div class="oil-quality">
-        <span class="oil-quality-icon">&#127807;</span>
-        <div>
-          <h4>Ekološka pridelava</h4>
-          <p>Brez pesticidov in kemičnih sredstev. Naši nasadi so certificirani po evropskih ekoloških standardih.</p>
+  <main id="vsebina">
+    <section class="section product" id="olje">
+      <div class="product-grid">
+        <div class="product-art" aria-label="Vizual Katal oljčnega olja">
+          <img src="assets/podznak.svg" alt="Katal oljčno olje">
+          <p class="placeholder-note"><strong>Fotografija izdelka kmalu:</strong> sem pride steklenica letošnjega olja na domači mizi ali med oljkami.</p>
+        </div>
+        <div class="product-copy">
+          <p class="eyebrow">Letošnje olje</p>
+          <h2>Olje, ki ga najprej probaš na kruhu.</h2>
+          <p>Najlepše ga je okusit čisto enostavno: kos dobrega kruha, malo soli in par kapelj olja. Potem pove vse samo.</p>
+          <div class="details" aria-label="Podatki o izdelku">
+            <div class="detail"><span>Izvor</span><strong>Izola, Slovenija</strong></div>
+            <div class="detail"><span>Pridelovalec</span><strong>Družina Katonar</strong></div>
+            <div class="detail"><span>Trgatev</span><strong>Podatek dodamo</strong></div>
+            <div class="detail"><span>Pakiranja in cena</span><strong>Podatek dodamo</strong></div>
+          </div>
+          <p class="muted">Ko nam Alen pošlje podrobnosti, dodamo sorte, letnik, opis okusa, pakiranja, ceno in podatek o razpoložljivosti.</p>
+          <div class="actions"><a class="button" href="mailto:info@katal.si?subject=Povpra%C5%A1evanje%20za%20Katal%20olj%C4%8Dno%20olje">Vprašaj za olje</a></div>
         </div>
       </div>
-      <div class="oil-quality">
-        <span class="oil-quality-icon">&#9201;</span>
-        <div>
-          <h4>Hladno stiskano</h4>
-          <p>Stiskano v 24 urah po obiranju pri temperaturi pod 27 &deg;C za ohranjanje vseh hranilnih snovi.</p>
-        </div>
-      </div>
-      <div class="oil-quality">
-        <span class="oil-quality-icon">&#127942;</span>
-        <div>
-          <h4>Avtohtone sorte</h4>
-          <p>Istrska Belica in Leccino &mdash; sorte, ki v našem podnebju dosežejo izjemno aromo in okus.</p>
-        </div>
-      </div>
-      <div class="oil-quality">
-        <span class="oil-quality-icon">&#128588;</span>
-        <div>
-          <h4>Ročno obiranje</h4>
-          <p>Vsaka oljka je obrana ročno, kar zagotavlja nepoškodovane plodove in olje vrhunske kakovosti.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- History -->
-  <section class="history-section" id="zgodovina">
-    <div class="history-inner">
-      <p class="section-subtitle">Dediščina</p>
-      <h2 class="section-title">Oljkarstvo v Slovenski Istri</h2>
-      <div class="section-divider"></div>
-      <p>Slovenska Istra ima bogato oljkarsko tradicijo, ki sega vse do antičnih časov. Že Rimljani so na tem območju sadili oljke in cenili olje iz istrskega polotoka. Skozi stoletja so oljčni nasadi oblikovali krajino od Kopra do Pirana in od Izole do zalednih vasi.</p>
-      <p>V času Beneške republike je bilo istrsko oljčno olje med najbolj iskanimi na trgih severne Italije. Tradicija se je ohranila skozi generacije kmetov, ki so kljub vojnam in političnim spremembam vztrajno skrbeli za svoje oljke.</p>
-      <p>Danes Slovenska Istra doživlja pravi preporod oljkarstva. Na približno 2.400 hektarjih uspeva okoli 300.000 oljk, ki rodijo olje izjemne kakovosti. Istrska oljčna olja redno prejemajo najvišja priznanja na mednarodnih ocenjevanjih, kar potrjuje, da podnebje, zemlja in znanje istrskih oljkarjev ustvarjajo resnično izjemen proizvod.</p>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <span class="timeline-year">Antika</span>
-          <p>Rimljani širijo oljkarstvo po celotnem istrskem polotoku. Istrsko olje postane cenjena dobrina na rimskih trgih.</p>
+    <section class="section" id="zgodba">
+      <div class="story-grid">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-inner">
+            <img src="assets/mark.svg" alt="Katal znak">
+            <p class="eyebrow">Fotografija kmalu</p>
+            <p>Sem pride prava fotografija Alena med oljkami, pri trgatvi ali doma v Izoli. Brez stock fotke, ker prava zgodba je boljša.</p>
+          </div>
         </div>
-        <div class="timeline-item">
-          <span class="timeline-year">Srednji vek</span>
-          <p>Benediktinski menihi ohranjajo znanje o gojenju oljk in predelavi olja skozi burna stoletja.</p>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-year">Beneška republika</span>
-          <p>Istrsko olje doseže sloves v Benetkah in po severni Italiji. Oljčni nasadi se širijo po celotnem obalnem pasu.</p>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-year">20. stoletje</span>
-          <p>Kljub vojnam in političnim spremembam istrski kmetje ohranjajo oljkarsko tradicijo. Družina Katonar začne svojo pot.</p>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-year">Danes</span>
-          <p>Slovenska Istra je priznana kot ena najboljših oljkarskih regij v Sredozemlju. Katal nadaljuje 50-letno družinsko tradicijo.</p>
+        <div class="story-copy">
+          <p class="eyebrow">Naša zgodba</p>
+          <h2>Družinska zemlja. Brez velikega cirkusa.</h2>
+          <p>Oljke so pri Katonarjevih doma že več kot pol stoletja. Danes za nasade in olje skrbi Alen, z istim občutkom za zemljo, trgatev in dober okus, kot je bil doma vedno.</p>
+          <p>Ne delamo olja za vitrino. Delamo ga za mizo, za ljudi in za trenutke, ko želiš, da tudi čisto preprosta jed malo bolj zaživi.</p>
+          <p class="history-note"><strong>Dopolnimo z Alenovo zgodbo:</strong> sem pride prava družinska letnica, stara fotografija ali njegov kratek stavek o oljkah.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Benefits -->
-  <section id="prednosti">
-    <p class="section-subtitle">Zdravje in okus</p>
-    <h2 class="section-title">Zakaj ekstra deviško oljčno olje?</h2>
-    <div class="section-divider"></div>
-    <p>Ekstra deviško oljčno olje je temelj sredozemske prehrane, ki velja za eno najzdravejših na svetu. Znanstvene raziskave potrjujejo številne blagodejne učinke redne uporabe kakovostnega oljčnega olja.</p>
+    <section class="section use-section" id="okus">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Kako ga imamo radi</p>
+          <h2>Dobro olje ne rabi komplicirat.</h2>
+          <p>Par idej za vsak dan. Brez ceremonije, samo da je dobro.</p>
+        </div>
+        <div class="use-grid">
+          <article class="use-card"><span class="number">01</span><h3>Na kruh.</h3><p>Kos kruha, ščepec soli in olje. Prvi test, ki ga doma vedno naredimo.</p></article>
+          <article class="use-card"><span class="number">02</span><h3>Čez toplo zelenjavo.</h3><p>Dodaj ga čisto na koncu, da ostane okus svež in izrazit.</p></article>
+          <article class="use-card"><span class="number">03</span><h3>Z ribo ali pašto.</h3><p>Par kapelj pred serviranjem naredi ravno tisto razliko, ki jo potem vsi opazijo.</p></article>
+        </div>
+      </div>
+    </section>
 
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <span class="benefit-icon">&#10084;&#65039;</span>
-        <h3>Zdravje srca</h3>
-        <p>Enkrat nenasičene maščobne kisline, zlasti oleinska kislina, znižujejo slabi holesterol (LDL) in ščitijo srčno-žilni sistem.</p>
+    <section class="section contact" id="kontakt">
+      <div class="contact-inner">
+        <p class="eyebrow">Kontakt</p>
+        <h2>Za olje nam kar piši.</h2>
+        <p>Za ceno, pakiranja, prevzem in razpoložljivost nam pošlji sporočilo. Odgovorimo osebno, brez avtomatov.</p>
+        <div class="actions"><a class="button" href="mailto:info@katal.si?subject=Povpra%C5%A1evanje%20za%20Katal%20olj%C4%8Dno%20olje">Pošlji povpraševanje</a></div>
+        <p class="contact-line">E-pošta: <a href="mailto:info@katal.si">info@katal.si</a></p>
       </div>
-      <div class="benefit-card">
-        <span class="benefit-icon">&#129516;</span>
-        <h3>Bogato z antioksidanti</h3>
-        <p>Polifenoli in vitamin E v oljčnem olju ščitijo celice pred oksidativnim stresom in prezgodnjim staranjem.</p>
-      </div>
-      <div class="benefit-card">
-        <span class="benefit-icon">&#129516;</span>
-        <h3>Protivnetno delovanje</h3>
-        <p>Oleokantal, naravna spojina v oljčnem olju, ima podobne protivnetne učinke kot ibuprofen.</p>
-      </div>
-      <div class="benefit-card">
-        <span class="benefit-icon">&#129382;</span>
-        <h3>Zdravje možganov</h3>
-        <p>Redna uporaba oljčnega olja je povezana z boljšim kognitivnim delovanjem in manjšim tveganjem za nevrodegenerativne bolezni.</p>
-      </div>
-      <div class="benefit-card">
-        <span class="benefit-icon">&#127860;</span>
-        <h3>Prebavni sistem</h3>
-        <p>Oljčno olje spodbuja zdravo prebavo, ščiti želodčno sluznico in pomaga pri absorpciji vitaminov, topnih v maščobah.</p>
-      </div>
-      <div class="benefit-card">
-        <span class="benefit-icon">&#128171;</span>
-        <h3>Zdrava koža</h3>
-        <p>Vitamine E in K ter zdrave maščobe hranijo kožo od znotraj in prispevajo k njenemu mladostnemu videzu.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Contact -->
-  <section class="contact-section" id="kontakt">
-    <div class="contact-inner">
-      <p class="section-subtitle">Stopite v stik</p>
-      <h2 class="section-title">Kontakt</h2>
-      <div class="section-divider"></div>
-      <p>Naše olje je na voljo za neposreden nakup. Obiščite nas v Izoli ali nas kontaktirajte za naročilo.</p>
-
-      <div class="contact-details">
-        <div class="contact-item"><strong>Kmetija:</strong> Alen Katonar &mdash; KATAL</div>
-        <div class="contact-item"><strong>Lokacija:</strong> Izola, Slovenija</div>
-        <div class="contact-item"><strong>E-pošta:</strong> info@katal.si</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <div class="logo"><img src="assets/logo-secondary.svg" alt="Katal"></div>
-    <p>&copy; 2026 Katal &mdash; Družina Katonar, Izola. Vse pravice pridržane.</p>
+    <img class="footer-logo" src="assets/logo-secondary.svg" alt="Katal">
+    <p>© 2026 Katal · Družina Katonar, Izola</p>
   </footer>
 
   <script>
-    // Navbar scroll effect
     const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
   </script>
 </body>
 </html>
